@@ -1,5 +1,5 @@
 # frontEndAssignment
-first run -> npm install
+first run -> npm install,<br>
 then run -> node server.js
 go to http://localhost:3000/
 
