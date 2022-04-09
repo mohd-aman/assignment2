@@ -1,4 +1,4 @@
-# frontEndAssignment
+# Assignment
 first run -> npm install,<br>
 then run -> node server.js <br>
 finally go to------> http://localhost:3000/

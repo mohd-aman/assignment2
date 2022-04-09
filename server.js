@@ -45,7 +45,7 @@ app.post('/details',function(req,res){
 
 app.get('/getAll',async function(req,res){
     let arr = [];
-    await base('Projects').select({
+    base('Projects').select({
         // Selecting the first 3 records in Grid view:
         maxRecords: 3,
         view: "Grid view"
