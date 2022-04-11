@@ -1,11 +1,14 @@
 let btns = document.querySelectorAll(".btnDiv button");
 let addBtn = btns[0];
 let deleteBtn = btns[1];
+let sortBtn = btns[2];
 let isDeleteClicked = false;
+let isSortClicked = false;
+let data;
 
 (async function(){
     let res = await axios.get('/getAll');
-    let data = res.data;
+    data = res.data;
     for(let i=0;i<data.length;i++){
         let name = data[i].name;
         let description = data[i].description;
@@ -13,7 +16,6 @@ let isDeleteClicked = false;
         let id = data[i].id
         addModal(name,description,size,id);
     }
-
 })();
 
 addBtn.addEventListener("click",async function(){
@@ -41,6 +43,25 @@ deleteBtn.addEventListener("click",function(){
         deleteBtn.classList.add("active");
     }
     isDeleteClicked = !isDeleteClicked;
+})
+
+sortBtn.addEventListener("click",async function(){
+    let container = document.querySelector(".container");
+    container.innerHTML = "";
+    if(!isSortClicked){
+        data.sort((a,b)=> Number(a.size.split(" ")[0]-Number(b.size.split(" ")[0])))
+    }
+    else{
+        data.sort((a,b)=> Number(b.size.split(" ")[0]-Number(a.size.split(" ")[0])))
+    }
+    for(let i=0;i<data.length;i++){
+        let name = data[i].name;
+        let description = data[i].description;
+        let size = data[i].size;
+        let id = data[i].id
+        addModal(name,description,size,id);
+    }
+    isSortClicked = !isSortClicked
 })
 
 function addModal(name,description,size,id){
