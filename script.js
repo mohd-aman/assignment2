@@ -4,11 +4,10 @@ let deleteBtn = btns[1];
 let sortBtn = btns[2];
 let isDeleteClicked = false;
 let isSortClicked = false;
-let data;
 
 (async function(){
     let res = await axios.get('/getAll');
-    data = res.data;
+    let data = res.data;
     for(let i=0;i<data.length;i++){
         let name = data[i].name;
         let description = data[i].description;
@@ -48,6 +47,8 @@ deleteBtn.addEventListener("click",function(){
 sortBtn.addEventListener("click",async function(){
     let container = document.querySelector(".container");
     container.innerHTML = "";
+    let res = await axios.get('/getAll');
+    let data = res.data;
     if(!isSortClicked){
         data.sort((a,b)=> Number(a.size.split(" ")[0]-Number(b.size.split(" ")[0])))
     }
