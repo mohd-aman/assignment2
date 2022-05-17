@@ -4,8 +4,8 @@ const app = express()
 const bp = require('body-parser')
 var Airtable = require('airtable');
 Airtable.configure({
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: 'key9VnSSWPk8lGi1q'
+    endpointUrl: '',
+    apiKey: ''
 });
 var base = Airtable.base('app6XyZNIZWSC5eOA');
 
